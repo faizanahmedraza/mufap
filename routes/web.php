@@ -1,7 +1,10 @@
 <?php
 
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\Funds\CategoryController;
+use App\Http\Controllers\Dashboard\Funds\SectorController;
+use App\Http\Controllers\Dashboard\Funds\InvestorController;
+use App\Http\Controllers\Dashboard\Funds\ChannelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,15 +37,20 @@ Route::get('/dashboard', function () {
     return view('dashboard.main');
 });
 
-Route::get('/funds/investor-setup', function () {
-    return view('dashboard.funds.investor');
+Route::prefix('dashboard')->group(function () {
+    //Funds Routes
+    Route::prefix('funds')->group(function () {
+        Route::get('investor-setup', [InvestorController::class,'index'])->name('investor');
+        Route::get('category-setup', [CategoryController::class,'index'])->name('category');
+        Route::get('channels-setup', [ChannelController::class,'index'])->name('channel');
+        Route::get('sector-setup', [SectorController::class,'index'])->name('sector');
+        Route::post('investor-setup', [InvestorController::class,'add'])->name('investor.add');
+        Route::post('category-setup', [CategoryController::class,'add'])->name('category.add');
+        Route::post('channels-setup', [ChannelController::class,'add'])->name('channel.add');
+        Route::post('sector-setup', [SectorController::class,'add'])->name('sector.add');
+    });  
 });
-Route::get('/funds/category-setup', function () {
-    return view('dashboard.funds.category');
-});
-Route::get('/funds/channels-setup', function () {
-    return view('dashboard.funds.channels');
-});
-Route::get('/funds/sector-setup', function () {
-    return view('dashboard.funds.sector');
+
+Route::fallback(function () {
+    return "<h1 style='height: 100%; display: flex; justify-content: center; align-items: center;'>404 NOT FOUND!</h1>";
 });

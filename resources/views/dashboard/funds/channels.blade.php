@@ -28,11 +28,12 @@
                     <div class="card-header">
                         <h3 class="card-title">Channel Setup Form</h3>
                     </div>
-                    <form action="">
+                    <form action="{{ route('channel.add') }}" method="POST">
+                        @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Channel Name</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                <label for="channel_name">Channel Name</label>
+                                <input type="text" class="form-control" name="channel_name" id="channel_name"
                                     placeholder="Enter email">
                             </div>
                         </div>
@@ -60,10 +61,11 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach ($channels as $channel)
                                 <tr>
-                                    <td>1</td>
-                                    <td>XYZ</td>
-                                    <td>True</td>
+                                    <td>{{ $channel->ChannelID }}</td>
+                                    <td>{{ $channel->ChannelName }}</td>
+                                    <td>{{ $channel->IsActive }}</td>
                                     <td class="project-actions">
                                         <a class="btn btn-info btn-sm" href="#">
                                             <i class="fas fa-pencil-alt">
@@ -77,6 +79,7 @@
                                         </a>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

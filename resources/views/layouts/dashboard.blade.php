@@ -194,25 +194,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/funds/investor-setup" class="nav-link {{ Request::path() === 'funds/investor-setup' ? 'active' : ''}}">
+                <a href="{{ route('investor') }}" class="nav-link {{ Request::path() === 'dashboard/funds/investor-setup' ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>INVESTOR SETUP</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/funds/channels-setup" class="nav-link {{ Request::path() === 'funds/channels-setup' ? 'active' : ''}}">
+                <a href="{{ route('channel') }}" class="nav-link {{ Request::path() === 'dashboard/funds/channels-setup' ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>CHANNELS SETUP</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/funds/sector-setup" class="nav-link {{ Request::path() === 'funds/sector-setup' ? 'active' : ''}}">
+                <a href="{{ route('sector') }}" class="nav-link {{ Request::path() === 'dashboard/funds/sector-setup' ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>SECTOR SETUP</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/funds/category-setup" class="nav-link {{ Request::path() === 'funds/category-setup' ? 'active' : ''}}">
+                <a href="{{ route('category') }}" class="nav-link {{ Request::path() === 'dashboard/funds/category-setup' ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>CATEGORY SETUP</p>
                 </a>

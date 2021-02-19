@@ -17,6 +17,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => ['required','email','unique:users'],
             'password' => ['required','min:6','confirmed'],
+            'password_confirmation' => ['required','min:6'],
         ]);
     
         $data = $request->all();

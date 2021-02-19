@@ -28,11 +28,12 @@
                     <div class="card-header">
                         <h3 class="card-title">Category Setup Form</h3>
                     </div>
-                    <form action="">
+                    <form action="{{ route('category.add') }}" method="POST">
+                        @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="exampleInputEmail1">Category Name</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                <label for="catergory_name">Category Name</label>
+                                <input type="text" class="form-control" name="category_name" id="category_name"
                                     placeholder="Enter email">
                             </div>
                         </div>
@@ -60,10 +61,11 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($categories as $category)
                                 <tr>
-                                    <td>1</td>
-                                    <td>XYZ</td>
-                                    <td>True</td>
+                                    <td>{{ $category->CategoryID }}</td>
+                                    <td>{{ $category->CategoryName }}</td>
+                                    <td>{{ $category->IsActive }}</td>
                                     <td class="project-actions">
                                         <a class="btn btn-info btn-sm" href="#">
                                             <i class="fas fa-pencil-alt">
@@ -77,6 +79,7 @@
                                         </a>
                                     </td>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
