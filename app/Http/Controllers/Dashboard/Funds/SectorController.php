@@ -15,7 +15,7 @@ class SectorController extends Controller
 
     public function add(Request $request) {
         $request->validate([
-            'sector_name' => 'required'
+            'sector_name' => 'required|string',
         ]);
 
         $sector = new Sector();
@@ -25,5 +25,21 @@ class SectorController extends Controller
         $sector->save();
         
         return redirect()->route('sector');
+    }
+
+    public function edit($id) {
+        return $id;
+    }
+
+    public function update(Request $request) {
+        //
+    }
+
+    public function tempDelete($id) {
+        //
+    }
+
+    public function PermanentDelete($id) {
+        //
     }
 }

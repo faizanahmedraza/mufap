@@ -11,6 +11,8 @@ class Sector extends Model
 
     protected $table = 'tbl_sectors';
     protected $primaryKey = 'SectorID';
-    const CREATED_AT = 'CreatedOn';
-    const UPDATED_AT = 'UpdatedOn';
+    public $timestamps = FALSE;
+      
+    protected $dateFormat = 'U';
+    protected $dates = ['CreatedOn','UpdatedOn'];   
 }

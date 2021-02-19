@@ -15,7 +15,7 @@ class ChannelController extends Controller
 
     public function add(Request $request) {
         $request->validate([
-            'channel_name' => 'required'
+            'channel_name' => 'required|string',
         ]);
 
         $channel = new Channel();
@@ -24,5 +24,21 @@ class ChannelController extends Controller
         $channel->IsDeleted = "123";
         $channel->save();
         return redirect()->route('channel');
+    }
+
+    public function edit($id) {
+        return $id;
+    }
+
+    public function update(Request $request) {
+        //
+    }
+
+    public function tempDelete($id) {
+        //
+    }
+
+    public function PermanentDelete($id) {
+        //
     }
 }

@@ -40,14 +40,22 @@ Route::get('/dashboard', function () {
 Route::prefix('dashboard')->group(function () {
     //Funds Routes
     Route::prefix('funds')->group(function () {
+        // For view only
         Route::get('investor-setup', [InvestorController::class,'index'])->name('investor');
         Route::get('category-setup', [CategoryController::class,'index'])->name('category');
         Route::get('channels-setup', [ChannelController::class,'index'])->name('channel');
         Route::get('sector-setup', [SectorController::class,'index'])->name('sector');
+        // For add only
         Route::post('investor-setup', [InvestorController::class,'add'])->name('investor.add');
         Route::post('category-setup', [CategoryController::class,'add'])->name('category.add');
         Route::post('channels-setup', [ChannelController::class,'add'])->name('channel.add');
         Route::post('sector-setup', [SectorController::class,'add'])->name('sector.add');
+        //For update only
+        Route::post('sector-setup/{id}', [SectorController::class,'update'])->name('sector.update');
+        Route::post('channels-setup/{id}', [ChannelController::class,'update'])->name('channel.update');
+        Route::post('category-setup/{id}', [CategoryController::class,'update'])->name('category.update');
+        Route::post('investor-setup/{id}', [CategoryController::class,'update'])->name('investor.update');
+
     });  
 });
 

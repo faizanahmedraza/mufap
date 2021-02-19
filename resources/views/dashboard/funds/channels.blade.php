@@ -33,8 +33,11 @@
                         <div class="card-body">
                             <div class="form-group">
                                 <label for="channel_name">Channel Name</label>
-                                <input type="text" class="form-control" name="channel_name" id="channel_name"
-                                    placeholder="Enter email">
+                                <input type="text" class="form-control @error('channel_name') is-invalid @enderror" name="channel_name" id="channel_name"
+                                    placeholder="Enter Channel Name">
+                                    @error('channel_name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                             </div>
                         </div>
                         <div class="card-footer">

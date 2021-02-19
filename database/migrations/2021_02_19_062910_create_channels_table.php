@@ -14,13 +14,19 @@ class CreateChannelsTable extends Migration
     public function up()
     {
         Schema::create('tbl_channels', function (Blueprint $table) {
-            $table->id();
+            $table->id('ChannelID');
             $table->string('ChannelName');
-            $table->tinyInteger('IsActive',4);
-            $table->tinyInteger('IsDeleted',4);
-            $table->timestamps();
+            $table->tinyInteger('IsActive',false,false);
+            $table->tinyInteger('IsDeleted',false,false);
+            // $table->softDeletes('IsDeleted',4);
+            $table->timestamp('CreatedOn')->nullable();
+            $table->timestamp('UpdatedOn')->nullable();
             $table->timestamp('CreatedBy')->nullable();
             $table->timestamp('UpdatedBy')->nullable();
+
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_unicode_ci';
         });
     }
 
@@ -31,6 +37,6 @@ class CreateChannelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('channels');
+        Schema::dropIfExists('tbl_channels');
     }
 }

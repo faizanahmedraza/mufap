@@ -11,7 +11,8 @@ class Channel extends Model
 
     protected $table = 'tbl_channels';
     protected $primaryKey = 'ChannelID';
-    const CREATED_AT = 'CreatedOn';
-    const UPDATED_AT = 'UpdatedOn';
-
+    public $timestamps = FALSE;
+      
+    protected $dateFormat = 'U';
+    protected $dates = ['CreatedOn','UpdatedOn'];   
 }

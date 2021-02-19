@@ -15,7 +15,7 @@ class CategoryController extends Controller
 
     public function add(Request $request) {
         $request->validate([
-            'category_name' => 'required'
+            'category_name' => 'required|string'
         ]);
 
         $category = new Category();
@@ -25,5 +25,21 @@ class CategoryController extends Controller
         $category->save();
 
         return redirect()->route('category');
+    }
+
+    public function edit($id) {
+        //
+    }
+
+    public function update(Request $request) {
+        return $request->category_name;
+    }
+
+    public function tempDelete($id) {
+        //
+    }
+
+    public function PermanentDelete($id) {
+        //
     }
 }

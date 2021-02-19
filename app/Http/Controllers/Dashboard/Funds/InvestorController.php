@@ -15,7 +15,7 @@ class InvestorController extends Controller
 
     public function add(Request $request) {
         $request->validate([
-            'investor_name' => 'required'
+            'investor_name' => 'required|string',
         ]);
 
         $investor = new Investor();
@@ -25,5 +25,21 @@ class InvestorController extends Controller
         $investor->save();
 
         return redirect()->route('investor');
+    }
+
+    public function edit($id) {
+        return $id;
+    }
+
+    public function update(Request $request) {
+        //
+    }
+
+    public function tempDelete($id) {
+        //
+    }
+
+    public function PermanentDelete($id) {
+        //
     }
 }

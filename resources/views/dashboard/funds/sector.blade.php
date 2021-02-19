@@ -29,12 +29,15 @@
                             <h3 class="card-title">Sector Setup Form</h3>
                         </div>
                         <form action="{{ route('sector.add') }}" method="POST">
-                        @csrf
+                            @csrf
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="sector_name">Sector Name</label>
-                                    <input type="text" class="form-control" name="sector_name" id="sector_name"
-                                        placeholder="Enter email">
+                                    <input type="text" class="form-control @error('sector_name') is-invalid @enderror"
+                                        name="sector_name" id="sector_name" placeholder="Enter Sector Name">
+                                    @error('sector_name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -61,25 +64,25 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach ($sectors as $sector)
-                                <tr>
-                                    <td>{{ $sector->SectorID }}</td>
-                                    <td>{{ $sector->SectorName }}</td>
-                                    <td>{{ $sector->IsActive }}</td>
-                                    <td class="project-actions">
-                                        <a class="btn btn-info btn-sm" href="#">
-                                            <i class="fas fa-pencil-alt">
-                                            </i>
-                                            Edit
-                                        </a>
-                                        <a class="btn btn-danger btn-sm" href="#">
-                                            <i class="fas fa-trash">
-                                            </i>
-                                            Delete
-                                        </a>
-                                    </td>
-                                </tr>
-                                @endforeach
+                                    @foreach ($sectors as $sector)
+                                        <tr>
+                                            <td>{{ $sector->SectorID }}</td>
+                                            <td>{{ $sector->SectorName }}</td>
+                                            <td>{{ $sector->IsActive }}</td>
+                                            <td class="project-actions">
+                                                <a class="btn btn-info btn-sm" href="#">
+                                                    <i class="fas fa-pencil-alt">
+                                                    </i>
+                                                    Edit
+                                                </a>
+                                                <a class="btn btn-danger btn-sm" href="#">
+                                                    <i class="fas fa-trash">
+                                                    </i>
+                                                    Delete
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
