@@ -11,7 +11,7 @@
         </li>
         <li class="nav-item">
             <a href="{{ route('channel') }}"
-                class="nav-link {{ Request::path() === 'dashboard/funds/channels-setup/' . $channel->ChannelID ? 'active' : '' }}">
+                class="nav-link {{ Request::path() === 'dashboard/funds/channels-setup' ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>CHANNELS SETUP</p>
             </a>
@@ -32,7 +32,7 @@
         </li>
         <li class="nav-item">
             <a href="{{ route('region') }}"
-                class="nav-link {{ Request::path() === 'dashboard/funds/region-setup' ? 'active' : '' }}">
+                class="nav-link {{ Request::path() === 'dashboard/funds/region-setup/' . $region->RegionID ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>REGION SETUP</p>
             </a>
@@ -58,18 +58,18 @@
                 <div class="w-75 mx-auto">
                     <div class="card card-secondary">
                         <div class="card-header">
-                            <h3 class="card-title">Channel Setup Form -- Update</h3>
+                            <h3 class="card-title">Region Setup Form</h3>
                         </div>
-                        <form action="{{ route('channel.update', ['id' => $channel->ChannelID]) }}" method="POST">
+                        <form action="{{ route('region.update', ['id' => $region->RegionID]) }}" method="POST">
                             @method('PUT')
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="channel_name">Channel Name</label>
-                                    <input type="text" class="form-control @error('channel_name') is-invalid @enderror"
-                                        name="channel_name" id="channel_name" placeholder="Enter Channel Name"
-                                        value="{{ $channel->ChannelName }}">
-                                    @error('channel_name')
+                                    <label for="region_name">Region Name</label>
+                                    <input type="text" class="form-control @error('region_name') is-invalid @enderror"
+                                        name="region_name" id="region_name" placeholder="Enter Region Name"
+                                        value="{{ $region->RegionName }}">
+                                    @error('region_name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

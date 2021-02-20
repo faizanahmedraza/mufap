@@ -1,5 +1,9 @@
 @extends('layouts.dashboard')
 
+@section('sidenav')
+    @parent
+@endsection
+
 @section('content-header')
     <section class="content-header">
         <div class="container-fluid">
@@ -17,7 +21,7 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-@endsection
+@show
 
 @section('content-body')
     <section class="content">

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategoriesTable extends Migration
+class CreateRegionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_categories', function (Blueprint $table) {
-            $table->id('CategoryID');
-            $table->string('SectorName');
-            $table->string('CategoryName');
-            $table->boolean('FundCategoryAnnualize');
-            $table->integer('PerformanceSummarySortOrder');
-            $table->double('NavRange');
-            $table->tinyInteger('IsActive');
-            $table->tinyInteger('IsDeleted');
+        Schema::create('tbl_regions', function (Blueprint $table) {
+            $table->id('RegionID');
+            $table->string('RegionName');
+            $table->tinyInteger('IsActive',false,false);
+            $table->tinyInteger('IsDeleted',false,false);
             $table->timestamp('CreatedOn')->nullable();
             $table->timestamp('UpdatedOn')->nullable();
             $table->timestamp('CreatedBy')->nullable();
@@ -40,6 +36,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_categories');
+        Schema::dropIfExists('tbl_regions');
     }
 }

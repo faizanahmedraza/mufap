@@ -9,13 +9,13 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Channel Setup</h1>
+                <h1>Region Setup</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
                     <li class="breadcrumb-item active">Funds Management</li>
-                    <li class="breadcrumb-item active">Channel Setup</li>
+                    <li class="breadcrumb-item active">Region Setup</li>
                 </ol>
             </div>
         </div>
@@ -30,16 +30,16 @@
             <div class="col-md-4">
                 <div class="card card-secondary">
                     <div class="card-header">
-                        <h3 class="card-title">Channel Setup Form</h3>
+                        <h3 class="card-title">Region Setup Form</h3>
                     </div>
-                    <form action="{{ route('channel.add') }}" method="POST">
+                    <form action="{{ route('region.add') }}" method="POST">
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <label for="channel_name">Channel Name</label>
-                                <input type="text" class="form-control @error('channel_name') is-invalid @enderror" name="channel_name" id="channel_name"
-                                    placeholder="Enter Channel Name">
-                                    @error('channel_name')
+                                <label for="region_name">Region Name</label>
+                                <input type="text" class="form-control @error('region_name') is-invalid @enderror" name="region_name" id="region_name"
+                                    placeholder="Enter Region Name">
+                                    @error('region_name')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                             </div>
@@ -54,7 +54,7 @@
             <div class="col-md-8">
                 <div class="card card-secondary">
                     <div class="card-header">
-                        <h3 class="card-title">Channels Table</h3>
+                        <h3 class="card-title">Regions Table</h3>
                     </div>
 
                     <div class="card-body">
@@ -62,19 +62,19 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">#ID</th>
-                                    <th>Channel Name</th>
+                                    <th>Region Name</th>
                                     <th>Active</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            @foreach ($channels as $channel)
+                            @foreach ($regions as $region)
                                 <tr>
-                                    <td>{{ $channel->ChannelID }}</td>
-                                    <td>{{ $channel->ChannelName }}</td>
-                                    <td>{{ $channel->IsActive }}</td>
+                                    <td>{{ $region->RegionID }}</td>
+                                    <td>{{ $region->RegionName }}</td>
+                                    <td>{{ $region->IsActive }}</td>
                                     <td class="project-actions">
-                                        <a class="btn btn-info btn-sm" href="{{ route('channel.edit',['id'=>$channel->ChannelID]) }}">
+                                        <a class="btn btn-info btn-sm" href="{{ route('region.edit',['id'=>$region->RegionID]) }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit

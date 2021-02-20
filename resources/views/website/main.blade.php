@@ -5,7 +5,9 @@
 body {
     overflow-x: hidden;
 }
-
+#carouselExampleDark {
+    padding: 0px;
+}
 .carousel-caption {
     top: 15%;
     left: 5%;

@@ -9,19 +9,19 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Investor Setup</h1>
+                    <h1>Rating Setup</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
                         <li class="breadcrumb-item active">Funds Management</li>
-                        <li class="breadcrumb-item active">Investor Setup</li>
+                        <li class="breadcrumb-item active">Rating Setup</li>
                     </ol>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
     </section>
-@show
+@endsection
 
 @section('content-body')
     <section class="content">
@@ -30,18 +30,31 @@
                 <div class="col-md-4">
                     <div class="card card-secondary">
                         <div class="card-header">
-                            <h3 class="card-title">Investor Setup Form</h3>
+                            <h3 class="card-title">Rating Setup Form</h3>
                         </div>
-                        <form action="{{ route('investor.add') }}" method="POST">
+                        <form action="{{ route('rating.add') }}" method="POST">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="investor_name">Investor Name</label>
-                                    <input type="text" class="form-control @error('investor_name') is-invalid @enderror"
-                                        name="investor_name" id="investor_name" placeholder="Enter Investor Name">
-                                    @error('investor_name')
+                                    <label for="rating_code">Rating Code</label>
+                                    <input type="text" class="form-control @error('rating_code') is-invalid @enderror"
+                                        name="rating_code" id="rating_code" placeholder="Enter Rating Code">
+                                    @error('rating_code')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="rating_agency">Rating Agency</label>
+                                    <input type="text" class="form-control @error('rating_agency') is-invalid @enderror"
+                                        name="rating_agency" id="rating_agency" placeholder="Rating Agency Name">
+                                    @error('rating_agency')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="rating_remarks">Rating Remarks</label>
+                                    <textarea class="form-control" name="rating_remarks" id="rating_remarks" rows="3"
+                                        placeholder="Rating Remarks"></textarea>
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -54,7 +67,7 @@
                 <div class="col-md-8">
                     <div class="card card-secondary">
                         <div class="card-header">
-                            <h3 class="card-title">Investors Table</h3>
+                            <h3 class="card-title">Ratings Table</h3>
                         </div>
 
                         <div class="card-body">
@@ -62,19 +75,24 @@
                                 <thead>
                                     <tr>
                                         <th style="width: 10px">#ID</th>
-                                        <th>Investor Name</th>
+                                        <th>Rating Code</th>
+                                        <th>Rating Agency</th>
+                                        <th>Rating Remarks</th>
                                         <th>Active</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($investors as $investor)
+                                    @foreach ($ratings as $rating)
                                         <tr>
-                                            <td>{{ $investor->InvestorID }}</td>
-                                            <td>{{ $investor->InvestorName }}</td>
-                                            <td>{{ $investor->IsActive }}</td>
+                                            <td>{{ $rating->RatingID }}</td>
+                                            <td>{{ $rating->RatingCode }}</td>
+                                            <td>{{ $rating->RatingAgency }}</td>
+                                            <td>{{ $rating->RatingRemarks ?? '' }}</td>
+                                            <td>{{ $rating->IsActive }}</td>
                                             <td class="project-actions">
-                                                <a class="btn btn-info btn-sm" href="{{ route('investor.edit',['id'=>$investor->InvestorID]) }}">
+                                                <a class="btn btn-info btn-sm"
+                                                    href="{{ route('rating.edit', ['id' => $rating->RatingID]) }}">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
                                                     Edit

@@ -15,7 +15,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a href="{{ route('sector') }}" class="nav-link {{ Request::path() === 'dashboard/funds/sector-setup/'.$sector->SectorID ? 'active' : ''}}">
+      <a href="{{ route('sector') }}" class="nav-link {{ Request::path() === 'dashboard/funds/sector-setup' ? 'active' : ''}}">
         <i class="far fa-circle nav-icon"></i>
         <p>SECTOR SETUP</p>
       </a>
@@ -33,7 +33,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a href="{{ route('rating') }}" class="nav-link {{ Request::path() === 'dashboard/funds/rating-setup' ? 'active' : ''}}">
+      <a href="{{ route('rating') }}" class="nav-link {{ Request::path() === 'dashboard/funds/rating-setup/'. $rating->RatingID ? 'active' : ''}}">
         <i class="far fa-circle nav-icon"></i>
         <p>RATING SETUP</p>
       </a>
@@ -52,19 +52,34 @@
                 <div class="w-75 mx-auto">
                     <div class="card card-secondary">
                         <div class="card-header">
-                            <h3 class="card-title">Sector Setup Form</h3>
+                            <h3 class="card-title">Rating Setup Form</h3>
                         </div>
-                        <form action="{{ route('sector.update',['id'=>$sector->SectorID]) }}" method="POST">
-                        @method('PUT')
+                        <form action="{{ route('rating.update', ['id' => $rating->RatingID]) }}" method="POST">
+                            @method('PUT')
                             @csrf
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="sector_name">Sector Name</label>
-                                    <input type="text" class="form-control @error('sector_name') is-invalid @enderror"
-                                        name="sector_name" id="sector_name" placeholder="Enter Sector Name" value="{{$sector->SectorName }}">
-                                    @error('sector_name')
+                                    <label for="rating_code">Rating Code</label>
+                                    <input type="text" class="form-control @error('rating_code') is-invalid @enderror"
+                                        name="rating_code" id="rating_code" placeholder="Enter Rating Code"
+                                        value="{{ $rating->RatingCode }}">
+                                    @error('rating_code')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="rating_agency">Rating Agency</label>
+                                    <input type="text" class="form-control @error('rating_agency') is-invalid @enderror"
+                                        name="rating_agency" id="rating_agency" placeholder="Rating Agency Name"
+                                        value="{{ $rating->RatingAgency }}">
+                                    @error('rating_agency')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="rating_remarks">Rating Remarks</label>
+                                    <textarea class="form-control" name="rating_remarks" id="rating_remarks" rows="3"
+                                        placeholder="Rating Remarks">{{ $rating->RatingRemarks }}</textarea>
                                 </div>
                             </div>
                             <div class="card-footer">

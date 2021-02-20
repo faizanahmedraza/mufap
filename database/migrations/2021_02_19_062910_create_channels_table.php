@@ -18,7 +18,6 @@ class CreateChannelsTable extends Migration
             $table->string('ChannelName');
             $table->tinyInteger('IsActive',false,false);
             $table->tinyInteger('IsDeleted',false,false);
-            // $table->softDeletes('IsDeleted',4);
             $table->timestamp('CreatedOn')->nullable();
             $table->timestamp('UpdatedOn')->nullable();
             $table->timestamp('CreatedBy')->nullable();

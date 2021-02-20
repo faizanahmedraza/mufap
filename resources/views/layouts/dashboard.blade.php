@@ -192,6 +192,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
+            @section('sidenav')
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{ route('investor') }}" class="nav-link {{ Request::path() === 'dashboard/funds/investor-setup' ? 'active' : ''}}">
@@ -217,7 +218,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <p>CATEGORY SETUP</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="{{ route('region') }}" class="nav-link {{ Request::path() === 'dashboard/funds/region-setup' ? 'active' : ''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>REGION SETUP</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('rating') }}" class="nav-link {{ Request::path() === 'dashboard/funds/rating-setup' ? 'active' : ''}}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>RATING SETUP</p>
+                </a>
+              </li>
             </ul>
+            @show
           </li>
           <!-- <li class="nav-item">
             <a href="#" class="nav-link">
@@ -238,7 +252,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    @yield('content-header')
+    @section('content-header')
+    @show
     <!-- /.content-header -->
 
     <!-- Main content -->

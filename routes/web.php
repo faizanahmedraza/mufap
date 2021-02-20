@@ -5,6 +5,8 @@ use App\Http\Controllers\Dashboard\Funds\CategoryController;
 use App\Http\Controllers\Dashboard\Funds\SectorController;
 use App\Http\Controllers\Dashboard\Funds\InvestorController;
 use App\Http\Controllers\Dashboard\Funds\ChannelController;
+use App\Http\Controllers\Dashboard\Funds\RegionController;
+use App\Http\Controllers\Dashboard\Funds\RatingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,21 +47,28 @@ Route::prefix('dashboard')->group(function () {
         Route::get('category-setup', [CategoryController::class,'index'])->name('category');
         Route::get('channels-setup', [ChannelController::class,'index'])->name('channel');
         Route::get('sector-setup', [SectorController::class,'index'])->name('sector');
+        Route::get('region-setup', [RegionController::class,'index'])->name('region');
+        Route::get('rating-setup', [RatingController::class,'index'])->name('rating');
         // For add only
         Route::post('investor-setup', [InvestorController::class,'add'])->name('investor.add');
         Route::post('category-setup', [CategoryController::class,'add'])->name('category.add');
         Route::post('channels-setup', [ChannelController::class,'add'])->name('channel.add');
         Route::post('sector-setup', [SectorController::class,'add'])->name('sector.add');
+        Route::post('region-setup', [RegionController::class,'add'])->name('region.add');
+        Route::post('rating-setup', [RatingController::class,'add'])->name('rating.add');
         //For edit and update only
         Route::get('investor-setup/{id}', [InvestorController::class,'edit'])->name('investor.edit');
         Route::get('category-setup/{id}', [CategoryController::class,'edit'])->name('category.edit');
         Route::get('channels-setup/{id}', [ChannelController::class,'edit'])->name('channel.edit');
         Route::get('sector-setup/{id}', [SectorController::class,'edit'])->name('sector.edit');
-        Route::put('sector-setup', [SectorController::class,'update'])->name('sector.update');
-        Route::put('channels-setup', [ChannelController::class,'update'])->name('channel.update');
-        Route::put('category-setup', [CategoryController::class,'update'])->name('category.update');
-        Route::put('investor-setup', [CategoryController::class,'update'])->name('investor.update');
-
+        Route::get('region-setup/{id}', [RegionController::class,'edit'])->name('region.edit');
+        Route::get('rating-setup/{id}', [RatingController::class,'edit'])->name('rating.edit');
+        Route::put('sector-setup/{id}', [SectorController::class,'update'])->name('sector.update');
+        Route::put('channels-setup/{id}', [ChannelController::class,'update'])->name('channel.update');
+        Route::put('category-setup/{id}', [CategoryController::class,'update'])->name('category.update');
+        Route::put('investor-setup/{id}', [InvestorController::class,'update'])->name('investor.update');
+        Route::put('region-setup/{id}', [RegionController::class,'update'])->name('region.update');
+        Route::put('rating-setup/{id}', [RatingController::class,'update'])->name('rating.update');
     });  
 });
 
