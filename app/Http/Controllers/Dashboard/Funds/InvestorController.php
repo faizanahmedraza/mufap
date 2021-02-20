@@ -27,12 +27,21 @@ class InvestorController extends Controller
         return redirect()->route('investor');
     }
 
-    public function edit($id) {
-        return $id;
+    public function edit($InvestorID) {
+        $investor = Investor::find($InvestorID);
+        return view('dashboard.funds.investor-edit',compact('investor'));
     }
 
     public function update(Request $request) {
-        //
+        $request->validate([
+            'investor_name' => 'required|string'
+        ]);
+        $investor = Investor::find($request->id);
+        $investor->InvestorName = $request->investor_name;
+        $investor->IsActive = "123";
+        $investor->IsDeleted = "123";
+        $investor->save();
+        return redirect()->route('investor');
     }
 
     public function tempDelete($id) {

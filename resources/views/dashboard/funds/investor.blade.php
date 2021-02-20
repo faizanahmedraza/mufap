@@ -70,7 +70,7 @@
                                             <td>{{ $investor->InvestorName }}</td>
                                             <td>{{ $investor->IsActive }}</td>
                                             <td class="project-actions">
-                                                <a class="btn btn-info btn-sm" href="#">
+                                                <a class="btn btn-info btn-sm" href="{{ route('investor.edit',['id'=>$investor->InvestorID]) }}">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
                                                     Edit

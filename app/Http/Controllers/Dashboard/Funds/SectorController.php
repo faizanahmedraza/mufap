@@ -27,14 +27,22 @@ class SectorController extends Controller
         return redirect()->route('sector');
     }
 
-    public function edit($id) {
-        return $id;
+    public function edit($SectorID) {
+        $sector = Sector::find($SectorID);
+        return view('dashboard.funds.sector-edit',compact('sector'));
     }
 
     public function update(Request $request) {
-        //
+        $request->validate([
+            'sector_name' => 'required|string'
+        ]);
+        $sector = Sector::find($request->id);
+        $sector->SectorName = $request->sector_name;
+        $sector->IsActive = "123";
+        $sector->IsDeleted = "123";
+        $sector->save();
+        return redirect()->route('sector');
     }
-
     public function tempDelete($id) {
         //
     }

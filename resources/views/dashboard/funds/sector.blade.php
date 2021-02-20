@@ -70,7 +70,7 @@
                                             <td>{{ $sector->SectorName }}</td>
                                             <td>{{ $sector->IsActive }}</td>
                                             <td class="project-actions">
-                                                <a class="btn btn-info btn-sm" href="#">
+                                                <a class="btn btn-info btn-sm" href="{{ route('sector.edit',['id'=>$sector->SectorID]) }}">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
                                                     Edit

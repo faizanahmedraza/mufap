@@ -27,12 +27,21 @@ class CategoryController extends Controller
         return redirect()->route('category');
     }
 
-    public function edit($id) {
-        //
+    public function edit($CategoryID) {
+        $category = Category::find($CategoryID);
+        return view('dashboard.funds.category-edit',compact('category'));
     }
 
     public function update(Request $request) {
-        return $request->category_name;
+        $request->validate([
+            'category_name' => 'required|string'
+        ]);
+        $category = Category::find($request->id);
+        $category->CategoryName = $request->category_name;
+        $category->IsActive = "123";
+        $category->IsDeleted = "123";
+        $category->save();
+        return redirect()->route('category');
     }
 
     public function tempDelete($id) {

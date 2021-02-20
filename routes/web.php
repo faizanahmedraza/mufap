@@ -50,11 +50,15 @@ Route::prefix('dashboard')->group(function () {
         Route::post('category-setup', [CategoryController::class,'add'])->name('category.add');
         Route::post('channels-setup', [ChannelController::class,'add'])->name('channel.add');
         Route::post('sector-setup', [SectorController::class,'add'])->name('sector.add');
-        //For update only
-        Route::post('sector-setup/{id}', [SectorController::class,'update'])->name('sector.update');
-        Route::post('channels-setup/{id}', [ChannelController::class,'update'])->name('channel.update');
-        Route::post('category-setup/{id}', [CategoryController::class,'update'])->name('category.update');
-        Route::post('investor-setup/{id}', [CategoryController::class,'update'])->name('investor.update');
+        //For edit and update only
+        Route::get('investor-setup/{id}', [InvestorController::class,'edit'])->name('investor.edit');
+        Route::get('category-setup/{id}', [CategoryController::class,'edit'])->name('category.edit');
+        Route::get('channels-setup/{id}', [ChannelController::class,'edit'])->name('channel.edit');
+        Route::get('sector-setup/{id}', [SectorController::class,'edit'])->name('sector.edit');
+        Route::put('sector-setup', [SectorController::class,'update'])->name('sector.update');
+        Route::put('channels-setup', [ChannelController::class,'update'])->name('channel.update');
+        Route::put('category-setup', [CategoryController::class,'update'])->name('category.update');
+        Route::put('investor-setup', [CategoryController::class,'update'])->name('investor.update');
 
     });  
 });

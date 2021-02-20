@@ -70,7 +70,7 @@
                                     <td>{{ $channel->ChannelName }}</td>
                                     <td>{{ $channel->IsActive }}</td>
                                     <td class="project-actions">
-                                        <a class="btn btn-info btn-sm" href="#">
+                                        <a class="btn btn-info btn-sm" href="{{ route('channel.edit',['id'=>$channel->ChannelID]) }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit

@@ -26,12 +26,21 @@ class ChannelController extends Controller
         return redirect()->route('channel');
     }
 
-    public function edit($id) {
-        return $id;
+    public function edit($ChannelID) {
+        $channel = Channel::find($ChannelID);
+        return view('dashboard.funds.channels-edit',compact('channel'));
     }
 
     public function update(Request $request) {
-        //
+        $request->validate([
+            'channel_name' => 'required|string'
+        ]);
+        $channel = Channel::find($request->id);
+        $channel->ChannelName = $request->channel_name;
+        $channel->IsActive = "123";
+        $channel->IsDeleted = "123";
+        $channel->save();
+        return redirect()->route('channel');
     }
 
     public function tempDelete($id) {

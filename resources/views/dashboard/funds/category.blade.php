@@ -28,28 +28,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Category Setup Form</h3>
                         </div>
-                        <div id="addform">
                             <form action="{{ route('category.add') }}" method="POST">
-                                @csrf
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="category_name">Category  add</label>
-                                        <input type="text" class="form-control @error('category_name') is-invalid @enderror"
-                                            name="category_name" id="category_name" placeholder="Enter Category Name">
-                                        @error('category_name')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                            </form>
-                        </div>
-                        
-                        <div id="update-form">
-                            <form action="{{ route('category.add') }}" method="POST">
-                                @method("PUT")
                                 @csrf
                                 <div class="card-body">
                                     <div class="form-group">
@@ -65,8 +44,6 @@
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
-                        </div>
-
                     </div>
                 </div>
 
@@ -93,7 +70,7 @@
                                             <td>{{ $category->CategoryName }}</td>
                                             <td>{{ $category->IsActive }}</td>
                                             <td class="project-actions">
-                                                <a class="btn btn-info btn-sm" href="#" id="onEdit">
+                                                <a class="btn btn-info btn-sm" href="{{ route('category.edit',['id'=>$category->CategoryID]) }}">
                                                     <i class="fas fa-pencil-alt">
                                                     </i>
                                                     Edit
@@ -126,18 +103,3 @@
         </div>
     </section>
 @endsection
-
-@once
-    @section('scripts')
-        <script>
-            $(document).ready(function() {
-                $("#update-form").hide();
-                $("#addform").show();
-                $("#onEdit").click(function() {
-                    $("#update-form").show();
-                    $("#addform").hide();
-                });
-            });
-        </script>
-    @endsection
-@endonce
